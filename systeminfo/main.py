@@ -11,21 +11,39 @@
 import os
 import platform
 import socket
+import psutil
 def getMachineName():
     print(socket.gethostname())
 
-def getOSName():
+def getOSInfo():
     print("OS:", platform.uname().system )
     print("OS version:", platform.uname().release)
 
-def cpuInformation():
+def getCPUInfo():
     print("CPU cores:", os.cpu_count())
 
+def getMemoryInfo():
+    print("System memory:", get_size(psutil.virtual_memory().total))
+
 def machineIpAddress():
-    print("IP:", socket.gethostname(socket.gethostname()))
+    print("IP:", socket.gethostbyname(socket.gethostname()))
 
 
-
+def get_size(bytes, suffix="B"):
+    """
+    Scale bytes to its proper format
+    e.g:
+        1253656 => '1.20MB'
+        1253656678 => '1.17GB'
+    """
+    factor = 1024
+    for unit in ["", "K", "M", "G", "T", "P"]:
+        if bytes < factor:
+            return f"{bytes:.2f}{unit}{suffix}"
+        bytes /= factor
 
 print(socket.gethostname())
+print(platform.uname().machine)
+print("System memory:", get_size(psutil.virtual_memory().total))
+print("IP:", socket.gethostbyname(socket.gethostname()))
 # getMachineName()
