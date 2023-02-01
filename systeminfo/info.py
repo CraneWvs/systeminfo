@@ -18,7 +18,6 @@ def getMemoryInfo():
 def machineIpAddress():
     print("IP:", socket.gethostbyname(socket.gethostname()))
 
-
 def get_size(bytes, suffix="B"):
     """
     Scale bytes to its proper format
@@ -31,3 +30,10 @@ def get_size(bytes, suffix="B"):
         if bytes < factor:
             return f"{bytes:.2f}{unit}{suffix}"
         bytes /= factor
+
+def summary():
+    getMachineName()
+    getOSInfo()
+    getCPUInfo()
+    getMemoryInfo()
+    machineIpAddress()
