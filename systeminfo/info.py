@@ -1,13 +1,3 @@
-# This program should display:
-# 1. name of machine
-# 2. operating system name
-# 3. operating system version
-# 4. number of cpu's
-# 5. amount of memory
-# 6. IP address of machine
-# ©UCD Semester II/ Modular
-# 7. Using the time taken to execute a simple numerical task, compute a CPU strength score for the machine.
-# Use the timeit module and consider using the sample code 1 at the end, or some modiûcation of it.
 import os
 import platform
 import socket
@@ -41,9 +31,3 @@ def get_size(bytes, suffix="B"):
         if bytes < factor:
             return f"{bytes:.2f}{unit}{suffix}"
         bytes /= factor
-
-print(socket.gethostname())
-print(platform.uname().machine)
-print("System memory:", get_size(psutil.virtual_memory().total))
-print("IP:", socket.gethostbyname(socket.gethostname()))
-# getMachineName()
